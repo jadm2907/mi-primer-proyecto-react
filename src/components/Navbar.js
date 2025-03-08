@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from '../context/ThemeContext';
 
 const Navbar = () => {
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+
   return (
-    <nav>
+    <nav className={isDarkMode ? 'dark-mode' : 'light-mode'}>
       <ul>
         <li>
           <Link to="/">Inicio</Link>
@@ -15,12 +18,15 @@ const Navbar = () => {
           <Link to="/contact">Contacto</Link>
         </li>
         <li>
-          <Link to="/login">Iniciar Sesión</Link> {/* Enlace al login */}
+          <Link to="/login">Iniciar Sesión</Link>
         </li>
         <li>
-          <Link to="/register">Registrarse</Link> {/* Enlace al registro */}
+          <Link to="/register">Registrarse</Link>
         </li>
       </ul>
+      <button onClick={toggleTheme}>
+        Cambiar a {isDarkMode ? 'Modo Claro' : 'Modo Oscuro'}
+      </button>
     </nav>
   );
 };

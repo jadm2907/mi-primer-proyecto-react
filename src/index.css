@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/*Agregar estilos para el tema oscuro/claro*/
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.dark-mode nav {
+  background-color: #1f1f1f;
+}
+
+.light-mode nav {
+  background-color: #333;
+}

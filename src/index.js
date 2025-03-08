@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';// Usamos createRoot de React 18
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { AuthProvider } from './context/AuthContext';// Importamos el AuthProvider
+import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';// Importamos el AuthProvider
 
 // Creamos la raíz usando createRoot
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthProvider>
+      <ThemeProvider>
       <App />
+      </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>
 );

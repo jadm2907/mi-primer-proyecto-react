@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Notification from '../Notification';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -6,6 +7,7 @@ const Contact = () => {
     email: '',
     message: '',
   });
+  const [notification, setNotification] = useState({ message: '', type: '' });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,14 +16,17 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Gracias, ${formData.name}. Tu mensaje ha sido enviado.`);
-    setFormData({ name: '', email: '', message: '' }); // Limpiar el formulario
+    // Simulamos el envío de datos
+    setTimeout(() => {
+      setNotification({ message: 'Mensaje enviado con éxito', type: 'success' });
+      setFormData({ name: '', email: '', message: '' }); // Limpiar el formulario
+    }, 1000);
   };
 
   return (
     <div>
       <h1>Contacto</h1>
-      <p>Puedes contactarnos a través del siguiente formulario:</p>
+      <Notification message={notification.message} type={notification.type} />
       <form onSubmit={handleSubmit}>
         <label>
           Nombre:
