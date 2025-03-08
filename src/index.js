@@ -4,7 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './context/AuthContext';
-import { ThemeProvider } from './context/ThemeContext';// Importamos el AuthProvider
+import { ThemeProvider } from './context/ThemeContext';
+import { CartProvider } from './context/CartContext';
+import './i18n/i18n'; // Importa la configuración de i18n// Importamos el AuthProvider
 
 // Creamos la raíz usando createRoot
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,7 +16,9 @@ root.render(
   <React.StrictMode>
     <AuthProvider>
       <ThemeProvider>
-      <App />
+        <CartProvider>
+          <App />
+        </CartProvider>
       </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>
