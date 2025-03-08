@@ -1,29 +1,37 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { auth } from '../firebase';
+import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  // Verificar si hay un usuario en localStorage al cargar la aplicación
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+    return () => unsubscribe();
   }, []);
 
-  const login = (email, password) => {
-    const userData = { email };
-    setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData)); // Guardar en localStorage
-    alert(`Bienvenido, ${email}`);
+  const login = async (email, password) => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error.message);
+    }
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('user'); // Eliminar de localStorage
-    alert('Has cerrado sesión.');
+  const logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error.message);
+    }
   };
 
   return (

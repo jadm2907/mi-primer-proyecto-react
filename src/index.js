@@ -7,7 +7,10 @@ import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
-import './i18n/i18n'; // Importa la configuración de i18n// Importamos el AuthProvider
+import { OrderProvider } from './context/OrderContext';
+import { ToastContainer } from 'react-toastify'; // Importa ToastContainer
+import 'react-toastify/dist/ReactToastify.css'; // Importa los estilos 
+import './i18n/i18n'; 
 
 // Creamos la raíz usando createRoot
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,7 +22,10 @@ root.render(
       <ThemeProvider>
         <CartProvider>
           <FavoritesProvider>
-            <App />
+            <OrderProvider> {/* Envuelve la aplicación con OrderProvider */}
+              <App />
+              <ToastContainer /> {/* Agrega ToastContainer */}
+            </OrderProvider>
           </FavoritesProvider>
         </CartProvider>
       </ThemeProvider>

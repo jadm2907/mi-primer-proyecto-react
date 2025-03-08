@@ -1,5 +1,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Checkout from './components/pages/Checkout'; // Importa Checkout
+import Orders from './components/pages/Orders'; 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PrivateRoute from './components/PrivateRoute';
@@ -28,6 +30,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/checkout" element={<Checkout />} /> {/* Nueva ruta */}
+          <Route path="/orders" element={<Orders />} /> {/* Nueva ruta */}
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
           </Route>

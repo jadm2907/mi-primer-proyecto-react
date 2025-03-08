@@ -10,14 +10,13 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email && password) {
-      login(email, password);
-      setNotification({ message: 'Inicio de sesión exitoso', type: 'success' });
+    try {
+      await login(email, password);
       navigate('/profile');
-    } else {
-      setNotification({ message: 'Por favor, completa todos los campos', type: 'error' });
+    } catch (error) {
+      setNotification({ message: 'Error al iniciar sesión', type: 'error' });
     }
   };
 
