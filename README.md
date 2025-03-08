@@ -1,3 +1,13 @@
+# Mi Primer Proyecto React
+
+Este es un proyecto básico en React creado como parte de mi aprendizaje.
+
+## Instalación
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/jadm2907/mi-primer-proyecto-react.git
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
