@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FavoritesContext } from '../context/FavoritesContext';
+import { FavoritesContext } from '../../context/FavoritesContext'; // Ruta corregida
 import Product from '../products/Product';
 
 const Favorites = () => {
