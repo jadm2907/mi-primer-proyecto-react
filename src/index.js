@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { CartProvider } from './context/CartContext';
+import { FavoritesProvider } from './context/FavoritesContext';
 import './i18n/i18n'; // Importa la configuración de i18n// Importamos el AuthProvider
 
 // Creamos la raíz usando createRoot
@@ -17,7 +18,9 @@ root.render(
     <AuthProvider>
       <ThemeProvider>
         <CartProvider>
-          <App />
+          <FavoritesProvider>
+            <App />
+          </FavoritesProvider>
         </CartProvider>
       </ThemeProvider>
     </AuthProvider>
